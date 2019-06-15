@@ -1,5 +1,6 @@
 import React from 'react'
 
+// pullimng props.selectedVideo off into the placeholders name 
 const VideoDetail = ({ selectedVideo }) => {
     if (!selectedVideo) return <h2>Loading Spinner Goes Here</h2>;
 

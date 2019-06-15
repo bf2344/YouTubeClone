@@ -13,7 +13,8 @@ state = {
 
 componentDidMount () {
   //call the youtube API 
-    API.searchYouTube("NBA Finals")
+    API.searchYouTube("Avengers Endgame")
+    // our .then/.catch below capture the return value from the API call above 
     .then(res => this.setState({ videos: res.data.items, selectedVideo: res.data.items[0] }))
     .catch(err => console.log(err));
 }
@@ -30,13 +31,17 @@ render () {
       
       <Row>
         <Col md="8">
+
           <VideoDetail selectedVideo={this.state.selectedVideo} />
 
         </Col>
         <Col md="4">
           <VideoList>
            {this.state.videos.map(video => (
-              <VideoListItem video={video} />
+              <VideoListItem video={video} 
+              key={video.id.videoId} 
+              selectedVideo={this.state.selectedVideo}
+              />
            ))}
           </VideoList>
         </Col>
