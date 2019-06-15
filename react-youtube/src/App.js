@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import _ from 'lodash';
 import { Container, Row, Col } from 'reactstrap';
 import API from './utils/API';
 import SearchBar from './components/SearchBar'
@@ -29,13 +30,15 @@ searchYouTube = term => {
       this.setState({ selectedVideo });
   }
 
+  throttledSearch = _.debounce(this.searchYouTube, 800);
+
 render () {
 
   return (
     <Container>
         <Row>
           <Col>
-            <SearchBar searchYouTube={this.searchYouTube} />
+            <SearchBar searchYouTube={this.throttledSearch} />
         </Col>
       </Row>
       

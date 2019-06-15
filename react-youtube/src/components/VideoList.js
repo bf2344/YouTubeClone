@@ -8,6 +8,7 @@ const List = styled.ul`
 
 const ListItem = styled.li`
     margin-bottom: 1em;
+    text-align: right;
     img {
         border: ${props => props.active ? "5px solid orange" : "2px solid grey"};
         border-radius: 10px;
