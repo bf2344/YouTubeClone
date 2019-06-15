@@ -9,14 +9,20 @@ class App extends Component {
 state = {
   videos: [],
   selectedVideo: null
+
 }
 
 componentDidMount () {
   //call the youtube API 
-    API.searchYouTube("Avengers Endgame")
-    // our .then/.catch below capture the return value from the API call above 
-    .then(res => this.setState({ videos: res.data.items, selectedVideo: res.data.items[0] }))
-    .catch(err => console.log(err));
+  this.searchYouTube("Avengers EndGame")
+}
+
+searchYouTube = term => {
+  API.searchYouTube(term)
+  // our .then/.catch below capture the return value from the API call above 
+  .then(res => this.setState({ videos: res.data.items, selectedVideo: res.data.items[0] }))
+  .catch(err => console.log(err));
+  
 }
 
   onVideoSelect = (selectedVideo) => {
@@ -29,7 +35,7 @@ render () {
     <Container>
         <Row>
           <Col>
-            <SearchBar />
+            <SearchBar searchYouTube={this.searchYouTube} />
         </Col>
       </Row>
       
