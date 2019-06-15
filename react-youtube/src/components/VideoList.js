@@ -24,10 +24,14 @@ const VideoList = props => {
     )
 }
 
-const VideoListItem = ({ video, selectedVideo }) => {
+const VideoListItem = ({ video, selectedVideo, onVideoSelect }) => {
     return (
        <ListItem active={video === selectedVideo}>
-           <img src={video.snippet.thumbnails.medium.url} alt={video.snippet.title}/>
+           <img 
+           src={video.snippet.thumbnails.medium.url} 
+           alt={video.snippet.title}
+           onClick={() => onVideoSelect(video)}
+           />
        </ListItem>
     )
 }
