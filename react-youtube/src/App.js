@@ -19,6 +19,10 @@ componentDidMount () {
     .catch(err => console.log(err));
 }
 
+  onVideoSelect = (selectedVideo) => {
+      this.setState({ selectedVideo });
+  }
+
 render () {
 
   return (
@@ -41,6 +45,7 @@ render () {
               <VideoListItem video={video} 
               key={video.id.videoId} 
               selectedVideo={this.state.selectedVideo}
+              onVideoSelect={this.onVideoSelect}
               />
            ))}
           </VideoList>
